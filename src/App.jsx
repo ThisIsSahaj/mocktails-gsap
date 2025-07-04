@@ -6,6 +6,7 @@ import Cocktails from "./components/Cocktails";
 import Lenis from "lenis";
 import { useEffect } from "react";
 import About from "./components/About";
+import Art from "./components/Art";
 
 //  Registering both these plugins globally across the App
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -31,6 +32,7 @@ const App = () => {
         <Hero />
         <Cocktails />
         <About />
+        <Art />
       </main>
     )
 }
