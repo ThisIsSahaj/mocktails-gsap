@@ -5,6 +5,7 @@
 - @gsap.react
 - react-responsive : will help with animation logic and layer behaviour based on screen size
 - tailwindcss @tailwindcss/vite
+- lenis
 
 ## install
 - FFMPEG - https://ffmpeg.org/
