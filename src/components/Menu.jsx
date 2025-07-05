@@ -9,6 +9,9 @@ const Menu = () => {
   const contentRef = useRef();
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // to check direction of which arrow is clicked
+  const [direction, setDirection] = useState('right');
+
   useGSAP(() => {
 
     // title animation
@@ -16,19 +19,26 @@ const Menu = () => {
 
       // from
       {
+        yPercent: 100,
         opacity: 0,
       },
       // to
       {
+        yPercent: 0,
         opacity: 1,
         duration: 1
       }
     )
 
+    const fromX = direction === 'right' ? -100 : 100; 
+
     // image animation
     gsap.fromTo('.cocktail img', {
       opacity: 0,
-      xPercent: -100   //from out of screen
+      // xPercent: -100   //from out of screen
+
+      // based on direction of arrow click
+      xPercent: fromX   //from out of screen
     },
       {
         xPercent: 0,  //to center
@@ -38,13 +48,25 @@ const Menu = () => {
       })
 
 
-    // details animation
-    gsap.fromTo('.details h2, p', {
+    // details heading animation
+    gsap.fromTo('.details h2', {
       yPercent: 100,
       opacity: 0,
     }, {
       yPercent: 0,
       opacity: 100,
+       duration: 1,
+      ease: 'power1.inOut'
+    })
+
+    // details paragraph animation
+    gsap.fromTo('.details p', {
+      yPercent: 100,
+      opacity: 0,
+    }, {
+      yPercent: 0,
+      opacity: 100,
+       duration: 1,
       ease: 'power1.inOut'
     })
 
@@ -57,6 +79,9 @@ const Menu = () => {
 
   const goToSlide = (index) => {
     const newIndex = (index + totalCocktails) % totalCocktails;
+
+    setDirection(index > currentIndex ?  'right' : 'left')
+
 
     // E.g = (1 + 4)%4 = 1 -> therefore take me to index 1 element
 

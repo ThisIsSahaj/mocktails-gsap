@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import About from "./components/About";
 import Art from "./components/Art";
 import Menu from "./components/Menu";
+import Contact from "./components/Contact";
 
 //  Registering both these plugins globally across the App
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -35,6 +36,7 @@ const App = () => {
         <About />
         <Art />
         <Menu />
+        <Contact />
       </main>
     )
 }
